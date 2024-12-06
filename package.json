@@ -1,0 +1,26 @@
+{
+	"name": "tsify-next-example",
+	"version": "0.1.0",
+	"description": "",
+	"type": "module",
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"build": "npm run build:wasm && npm run gen:bind",
+		"build:wasm": "cargo build --target wasm32-unknown-unknown",
+		"gen:bind": "wasm-bindgen --out-dir pkg --out-name index --target bundler target/wasm32-unknown-unknown/debug/tsify_next_example.wasm",
+		"test": "npm run build && npm run test:run",
+		"test:run": "vitest run tests/",
+		"fmt": "npx @biomejs/biome format --write tests/"
+	},
+	"keywords": [],
+	"author": "Mitsui <todays.mitsui@gmail.com>",
+	"license": "ISC",
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"vite-plugin-top-level-await": "^1.4.4",
+		"vite-plugin-wasm": "^3.3.0",
+		"vitest": "^2.1.8"
+	}
+}
