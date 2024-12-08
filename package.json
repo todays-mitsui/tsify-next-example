@@ -11,7 +11,7 @@
 		"build:wasm": "cargo build --target wasm32-unknown-unknown",
 		"gen:bind": "wasm-bindgen --out-dir pkg --out-name index --target bundler target/wasm32-unknown-unknown/debug/tsify_next_example.wasm",
 		"test": "npm run build && npm run test:run",
-		"test:run": "vitest run tests/",
+		"test:run": "vitest run --reporter verbose tests/",
 		"fmt": "npx @biomejs/biome format --write tests/"
 	},
 	"keywords": [],
