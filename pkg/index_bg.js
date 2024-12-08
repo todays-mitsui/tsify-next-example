@@ -159,189 +159,6 @@ function debugString(val) {
     // TODO we could test for more things here, like `Set`s and `Map`s.
     return className;
 }
-/**
- * @param {Color} color
- * @returns {Color}
- */
-export function from_ts_namespace_into_rust_enum(color) {
-    const ret = wasm.from_ts_namespace_into_rust_enum(color);
-    return ret;
-}
-
-/**
- * @param {MyRecord} record
- * @returns {MyRecord}
- */
-export function from_ts_record_into_rust_hash_map(record) {
-    const ret = wasm.from_ts_record_into_rust_hash_map(record);
-    return ret;
-}
-
-/**
- * @param {number} n
- * @returns {number}
- */
-export function from_ts_number_into_rust_u32(n) {
-    const ret = wasm.from_ts_number_into_rust_u32(n);
-    return ret >>> 0;
-}
-
-/**
- * @param {number} n
- * @returns {number}
- */
-export function from_ts_number_into_rust_i32(n) {
-    const ret = wasm.from_ts_number_into_rust_i32(n);
-    return ret;
-}
-
-/**
- * @param {bigint} n
- * @returns {bigint}
- */
-export function from_ts_number_into_rust_u64(n) {
-    const ret = wasm.from_ts_number_into_rust_u64(n);
-    return BigInt.asUintN(64, ret);
-}
-
-/**
- * @param {bigint} n
- * @returns {bigint}
- */
-export function from_ts_number_into_rust_i64(n) {
-    const ret = wasm.from_ts_number_into_rust_i64(n);
-    return ret;
-}
-
-/**
- * @param {number} n
- * @returns {number}
- */
-export function from_ts_number_into_rust_f32(n) {
-    const ret = wasm.from_ts_number_into_rust_f32(n);
-    return ret;
-}
-
-/**
- * @param {string} s
- * @returns {string}
- */
-export function from_ts_string_into_rust_string(s) {
-    let deferred2_0;
-    let deferred2_1;
-    try {
-        const ptr0 = passStringToWasm0(s, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.from_ts_string_into_rust_string(ptr0, len0);
-        deferred2_0 = ret[0];
-        deferred2_1 = ret[1];
-        return getStringFromWasm0(ret[0], ret[1]);
-    } finally {
-        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
-    }
-}
-
-/**
- * @param {string} s
- * @returns {string}
- */
-export function from_ts_string_into_rust_str(s) {
-    let deferred2_0;
-    let deferred2_1;
-    try {
-        const ptr0 = passStringToWasm0(s, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len0 = WASM_VECTOR_LEN;
-        const ret = wasm.from_ts_string_into_rust_str(ptr0, len0);
-        deferred2_0 = ret[0];
-        deferred2_1 = ret[1];
-        return getStringFromWasm0(ret[0], ret[1]);
-    } finally {
-        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
-    }
-}
-
-/**
- * @param {boolean} b
- * @returns {boolean}
- */
-export function from_ts_boolean_into_rust_bool(b) {
-    const ret = wasm.from_ts_boolean_into_rust_bool(b);
-    return ret !== 0;
-}
-
-/**
- * @param {Null} _null
- * @returns {Null}
- */
-export function from_ts_null_into_rust_unit_struct(_null) {
-    const ret = wasm.from_ts_null_into_rust_unit_struct(_null);
-    return ret;
-}
-
-/**
- * @param {string | undefined} x
- * @param {string} y
- * @returns {string}
- */
-export function from_ts_nullable_string_into_rust_option_string(x, y) {
-    let deferred3_0;
-    let deferred3_1;
-    try {
-        var ptr0 = isLikeNone(x) ? 0 : passStringToWasm0(x, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        var len0 = WASM_VECTOR_LEN;
-        const ptr1 = passStringToWasm0(y, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-        const len1 = WASM_VECTOR_LEN;
-        const ret = wasm.from_ts_nullable_string_into_rust_option_string(ptr0, len0, ptr1, len1);
-        deferred3_0 = ret[0];
-        deferred3_1 = ret[1];
-        return getStringFromWasm0(ret[0], ret[1]);
-    } finally {
-        wasm.__wbindgen_free(deferred3_0, deferred3_1, 1);
-    }
-}
-
-/**
- * @param {string | undefined} [x]
- * @returns {string | undefined}
- */
-export function from_ts_optional_parameter_into_rust_option_string(x) {
-    var ptr0 = isLikeNone(x) ? 0 : passStringToWasm0(x, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
-    var len0 = WASM_VECTOR_LEN;
-    const ret = wasm.from_ts_optional_parameter_into_rust_option_string(ptr0, len0);
-    let v2;
-    if (ret[0] !== 0) {
-        v2 = getStringFromWasm0(ret[0], ret[1]).slice();
-        wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
-    }
-    return v2;
-}
-
-/**
- * @param {ObjectHasOptionalProperty} obj
- * @returns {ObjectHasOptionalProperty}
- */
-export function from_object_has_optional_property_into_rust_struct(obj) {
-    const ret = wasm.from_object_has_optional_property_into_rust_struct(obj);
-    return ret;
-}
-
-/**
- * @param {MyInterface} obj
- * @returns {MyInterface}
- */
-export function from_ts_interface_into_rust_struct(obj) {
-    const ret = wasm.from_ts_interface_into_rust_struct(obj);
-    return ret;
-}
-
-/**
- * @param {MyTuple} tuple
- * @returns {MyTuple}
- */
-export function from_ts_tuple_into_rust_struct(tuple) {
-    const ret = wasm.from_ts_tuple_into_rust_struct(tuple);
-    return ret;
-}
 
 function addToExternrefTable0(obj) {
     const idx = wasm.__externref_table_alloc();
@@ -676,11 +493,85 @@ export function from_ts_float64array_into_rust_vec(numbers) {
 }
 
 /**
- * @param {Function} f
- * @returns {Function}
+ * @param {MyRecord} record
+ * @returns {MyRecord}
  */
-export function from_ts_closure_into_js_sys_function(f) {
-    const ret = wasm.from_ts_closure_into_js_sys_function(f);
+export function from_ts_record_into_rust_hash_map(record) {
+    const ret = wasm.from_ts_record_into_rust_hash_map(record);
+    return ret;
+}
+
+/**
+ * @param {MyInterface} obj
+ * @returns {MyInterface}
+ */
+export function from_ts_interface_into_rust_struct(obj) {
+    const ret = wasm.from_ts_interface_into_rust_struct(obj);
+    return ret;
+}
+
+/**
+ * @param {Color} color
+ * @returns {Color}
+ */
+export function from_ts_namespace_into_rust_enum(color) {
+    const ret = wasm.from_ts_namespace_into_rust_enum(color);
+    return ret;
+}
+
+/**
+ * @param {MyTuple} tuple
+ * @returns {MyTuple}
+ */
+export function from_ts_tuple_into_rust_struct(tuple) {
+    const ret = wasm.from_ts_tuple_into_rust_struct(tuple);
+    return ret;
+}
+
+/**
+ * @param {string | undefined} x
+ * @param {string} y
+ * @returns {string}
+ */
+export function from_ts_nullable_string_into_rust_option_string(x, y) {
+    let deferred3_0;
+    let deferred3_1;
+    try {
+        var ptr0 = isLikeNone(x) ? 0 : passStringToWasm0(x, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        var len0 = WASM_VECTOR_LEN;
+        const ptr1 = passStringToWasm0(y, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len1 = WASM_VECTOR_LEN;
+        const ret = wasm.from_ts_nullable_string_into_rust_option_string(ptr0, len0, ptr1, len1);
+        deferred3_0 = ret[0];
+        deferred3_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred3_0, deferred3_1, 1);
+    }
+}
+
+/**
+ * @param {string | undefined} [x]
+ * @returns {string | undefined}
+ */
+export function from_ts_optional_parameter_into_rust_option_string(x) {
+    var ptr0 = isLikeNone(x) ? 0 : passStringToWasm0(x, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+    var len0 = WASM_VECTOR_LEN;
+    const ret = wasm.from_ts_optional_parameter_into_rust_option_string(ptr0, len0);
+    let v2;
+    if (ret[0] !== 0) {
+        v2 = getStringFromWasm0(ret[0], ret[1]).slice();
+        wasm.__wbindgen_free(ret[0], ret[1] * 1, 1);
+    }
+    return v2;
+}
+
+/**
+ * @param {ObjectHasOptionalProperty} obj
+ * @returns {ObjectHasOptionalProperty}
+ */
+export function from_object_has_optional_property_into_rust_struct(obj) {
+    const ret = wasm.from_object_has_optional_property_into_rust_struct(obj);
     return ret;
 }
 
@@ -699,6 +590,116 @@ export function from_ts_string_literal_type_union_into_rust_enum(item) {
  */
 export function from_ts_object_union_into_rust_enum(item) {
     const ret = wasm.from_ts_object_union_into_rust_enum(item);
+    return ret;
+}
+
+/**
+ * @param {Function} f
+ * @returns {Function}
+ */
+export function from_ts_closure_into_js_sys_function(f) {
+    const ret = wasm.from_ts_closure_into_js_sys_function(f);
+    return ret;
+}
+
+/**
+ * @param {number} n
+ * @returns {number}
+ */
+export function from_ts_number_into_rust_u32(n) {
+    const ret = wasm.from_ts_number_into_rust_u32(n);
+    return ret >>> 0;
+}
+
+/**
+ * @param {number} n
+ * @returns {number}
+ */
+export function from_ts_number_into_rust_i32(n) {
+    const ret = wasm.from_ts_number_into_rust_i32(n);
+    return ret;
+}
+
+/**
+ * @param {bigint} n
+ * @returns {bigint}
+ */
+export function from_ts_number_into_rust_u64(n) {
+    const ret = wasm.from_ts_number_into_rust_u64(n);
+    return BigInt.asUintN(64, ret);
+}
+
+/**
+ * @param {bigint} n
+ * @returns {bigint}
+ */
+export function from_ts_number_into_rust_i64(n) {
+    const ret = wasm.from_ts_number_into_rust_i64(n);
+    return ret;
+}
+
+/**
+ * @param {number} n
+ * @returns {number}
+ */
+export function from_ts_number_into_rust_f32(n) {
+    const ret = wasm.from_ts_number_into_rust_f32(n);
+    return ret;
+}
+
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+export function from_ts_string_into_rust_string(s) {
+    let deferred2_0;
+    let deferred2_1;
+    try {
+        const ptr0 = passStringToWasm0(s, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        const ret = wasm.from_ts_string_into_rust_string(ptr0, len0);
+        deferred2_0 = ret[0];
+        deferred2_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+    }
+}
+
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+export function from_ts_string_into_rust_str(s) {
+    let deferred2_0;
+    let deferred2_1;
+    try {
+        const ptr0 = passStringToWasm0(s, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
+        const len0 = WASM_VECTOR_LEN;
+        const ret = wasm.from_ts_string_into_rust_str(ptr0, len0);
+        deferred2_0 = ret[0];
+        deferred2_1 = ret[1];
+        return getStringFromWasm0(ret[0], ret[1]);
+    } finally {
+        wasm.__wbindgen_free(deferred2_0, deferred2_1, 1);
+    }
+}
+
+/**
+ * @param {boolean} b
+ * @returns {boolean}
+ */
+export function from_ts_boolean_into_rust_bool(b) {
+    const ret = wasm.from_ts_boolean_into_rust_bool(b);
+    return ret !== 0;
+}
+
+/**
+ * @param {Null} _null
+ * @returns {Null}
+ */
+export function from_ts_null_into_rust_unit_struct(_null) {
+    const ret = wasm.from_ts_null_into_rust_unit_struct(_null);
     return ret;
 }
 

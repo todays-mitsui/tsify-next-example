@@ -8,8 +8,12 @@
 	},
 	"scripts": {
 		"build": "npm run build:wasm && npm run gen:bind",
-		"build:wasm": "cargo build --target wasm32-unknown-unknown",
-		"gen:bind": "wasm-bindgen --out-dir pkg --out-name index --target bundler target/wasm32-unknown-unknown/debug/tsify_next_example.wasm",
+		"build:wasm": "npm run build:root:wasm && npm run build:js_mode:wasm",
+		"build:root:wasm": "cargo build --target wasm32-unknown-unknown",
+		"build:js_mode:wasm": "cargo build --manifest-path ./js_mode/Cargo.toml --target wasm32-unknown-unknown",
+		"gen:bind": "npm run gen:root:bind && npm run gen:js_mode:bind",
+		"gen:root:bind": "wasm-bindgen --out-dir pkg --out-name index --target bundler target/wasm32-unknown-unknown/debug/tsify_next_example.wasm",
+		"gen:js_mode:bind": "wasm-bindgen --out-dir js_mode/pkg --out-name index --target bundler js_mode/target/wasm32-unknown-unknown/debug/js_mode.wasm",
 		"test": "npm run build && npm run test:run",
 		"test:run": "vitest run --reporter verbose tests/",
 		"fmt": "npx @biomejs/biome format --write tests/"

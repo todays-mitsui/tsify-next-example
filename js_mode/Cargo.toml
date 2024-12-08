@@ -1,5 +1,5 @@
 [package]
-name = "tsify-next-example"
+name = "js_mode"
 publish = false
 version = "0.1.0"
 authors = ["todays-mitsui <todays.mitsui@gmail.com>"]
@@ -15,7 +15,7 @@ default = ["console_error_panic_hook"]
 wasm-bindgen = "0.2.84"
 js-sys = "0.3.72"
 console_error_panic_hook = { version = "0.1.7", optional = true }
-tsify-next = { version = "0.5.4", features = ["json"] }
+tsify-next = { version = "0.5.4", features = ["js"] }
 serde = "1.0.215"
 
 [dependencies.web-sys]
