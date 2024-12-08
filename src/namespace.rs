@@ -29,9 +29,3 @@ pub enum Color {
         value: f64,
     },
 }
-
-#[wasm_bindgen]
-pub fn from_ts_namespace_into_rust_enum(color: Color) -> Color {
-    console::log_1(&format!("value: {:?}", color).into());
-    return color;
-}

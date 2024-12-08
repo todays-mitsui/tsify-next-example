@@ -66,11 +66,6 @@ export function from_ts_record_into_rust_hash_map(record: MyRecord): MyRecord;
  */
 export function from_ts_interface_into_rust_struct(obj: MyInterface): MyInterface;
 /**
- * @param {Color} color
- * @returns {Color}
- */
-export function from_ts_namespace_into_rust_enum(color: Color): Color;
-/**
  * @param {MyTuple} tuple
  * @returns {MyTuple}
  */
@@ -120,12 +115,12 @@ export function from_ts_number_into_rust_i32(n: number): number;
  * @param {bigint} n
  * @returns {bigint}
  */
-export function from_ts_number_into_rust_u64(n: bigint): bigint;
+export function from_ts_bigint_into_rust_u64(n: bigint): bigint;
 /**
  * @param {bigint} n
  * @returns {bigint}
  */
-export function from_ts_number_into_rust_i64(n: bigint): bigint;
+export function from_ts_bigint_into_rust_i64(n: bigint): bigint;
 /**
  * @param {number} n
  * @returns {number}
@@ -178,7 +173,8 @@ export interface ObjectHasOptionalProperty {
 
 export type StringLiteralTypeUnion = "Foo" | "Bar" | "Baz";
 
+export type StringLiteralTypeUnion2 = "foo" | "bar" | "baz";
+
 export type ObjectUnion = { N: number } | { S: string } | { B: boolean } | { Tuple: [number, string, boolean] } | { Named: { n: number; s: string; b: boolean } };
 
 export type Null = null;
-

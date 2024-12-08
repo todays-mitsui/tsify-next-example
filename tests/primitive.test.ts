@@ -2,8 +2,8 @@ import { describe, test, expect } from "vitest";
 import {
 	from_ts_number_into_rust_u32,
 	from_ts_number_into_rust_i32,
-	from_ts_number_into_rust_u64,
-	from_ts_number_into_rust_i64,
+	from_ts_bigint_into_rust_u64,
+	from_ts_bigint_into_rust_i64,
 	from_ts_number_into_rust_f32,
 	from_ts_string_into_rust_string,
 	from_ts_string_into_rust_str,
@@ -80,75 +80,75 @@ describe("function from_ts_number_into_rust_i32(n: number): number", () => {
 	});
 });
 
-describe("function from_ts_number_into_rust_u64(n: bigint): bigint", () => {
+describe("function from_ts_bigint_into_rust_u64(n: bigint): bigint", () => {
 	test("渡した数がそのまま返る", () => {
-		expect(from_ts_number_into_rust_u64(9_007_199_254_740_991n)).toBe(
+		expect(from_ts_bigint_into_rust_u64(9_007_199_254_740_991n)).toBe(
 			9_007_199_254_740_991n,
 		);
 	});
 
 	test("number を渡すと例外が投げられる", () => {
 		// @ts-expect-error
-		expect(() => from_ts_number_into_rust_u64(42)).toThrow();
+		expect(() => from_ts_bigint_into_rust_u64(42)).toThrow();
 	});
 
 	test("数値に解釈可能な文字列も渡せる", () => {
 		// @ts-expect-error
-		expect(from_ts_number_into_rust_u64("9007199254740991")).toBe(
+		expect(from_ts_bigint_into_rust_u64("9007199254740991")).toBe(
 			9_007_199_254_740_991n,
 		);
 	});
 
 	test("数値に解釈できない文字列を渡すと例外が投げられる", () => {
 		// @ts-expect-error
-		expect(() => from_ts_number_into_rust_u64("foobar")).toThrow();
+		expect(() => from_ts_bigint_into_rust_u64("foobar")).toThrow();
 	});
 
 	test("u64 の最小値よりも小さいとアンダーフローする", () => {
-		expect(from_ts_number_into_rust_u64(-1n)).toBe(18_446_744_073_709_551_615n);
+		expect(from_ts_bigint_into_rust_u64(-1n)).toBe(18_446_744_073_709_551_615n);
 	});
 
 	test("u64 の最大値よりも大きいとオーバーフローする", () => {
-		expect(from_ts_number_into_rust_u64(18_446_744_073_709_551_616n)).toBe(0n);
+		expect(from_ts_bigint_into_rust_u64(18_446_744_073_709_551_616n)).toBe(0n);
 	});
 });
 
-describe("function from_ts_number_into_rust_i64(n: bigint): bigint", () => {
+describe("function from_ts_bigint_into_rust_i64(n: bigint): bigint", () => {
 	test("渡した数がそのまま返る", () => {
-		expect(from_ts_number_into_rust_i64(9_007_199_254_740_991n)).toBe(
+		expect(from_ts_bigint_into_rust_i64(9_007_199_254_740_991n)).toBe(
 			9_007_199_254_740_991n,
 		);
 	});
 
 	test("number を渡すと例外が投げられる", () => {
 		// @ts-expect-error
-		expect(() => from_ts_number_into_rust_i64(-42)).toThrow();
+		expect(() => from_ts_bigint_into_rust_i64(-42)).toThrow();
 	});
 
 	test("数値に解釈可能な文字列も渡せる", () => {
 		// @ts-expect-error
-		expect(from_ts_number_into_rust_i64("9007199254740991")).toBe(
+		expect(from_ts_bigint_into_rust_i64("9007199254740991")).toBe(
 			9_007_199_254_740_991n,
 		);
 		// @ts-expect-error
-		expect(from_ts_number_into_rust_i64("-9007199254740991")).toBe(
+		expect(from_ts_bigint_into_rust_i64("-9007199254740991")).toBe(
 			-9_007_199_254_740_991n,
 		);
 	});
 
 	test("数値に解釈できない文字列を渡すと例外が投げられる", () => {
 		// @ts-expect-error
-		expect(() => from_ts_number_into_rust_i64("foobar")).toThrow();
+		expect(() => from_ts_bigint_into_rust_i64("foobar")).toThrow();
 	});
 
 	test("i64 の最小値よりも小さいとアンダーフローする", () => {
-		expect(from_ts_number_into_rust_i64(-9_223_372_036_854_775_809n)).toBe(
+		expect(from_ts_bigint_into_rust_i64(-9_223_372_036_854_775_809n)).toBe(
 			9_223_372_036_854_775_807n,
 		);
 	});
 
 	test("i64 の最大値よりも大きいとオーバーフローする", () => {
-		expect(from_ts_number_into_rust_i64(9_223_372_036_854_775_808n)).toBe(
+		expect(from_ts_bigint_into_rust_i64(9_223_372_036_854_775_808n)).toBe(
 			-9_223_372_036_854_775_808n,
 		);
 	});

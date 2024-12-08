@@ -12,6 +12,16 @@ pub enum StringLiteralTypeUnion {
     Baz,
 }
 
+// @type StringLiteralTypeUnion2 = "foo" | "bar" | "baz";
+#[derive(Tsify, Serialize, Deserialize, Debug)]
+#[tsify(into_wasm_abi, from_wasm_abi)]
+#[serde(rename_all = "camelCase")]
+pub enum StringLiteralTypeUnion2 {
+    Foo,
+    Bar,
+    Baz,
+}
+
 // @type (item: StringLiteralTypeUnion) => StringLiteralTypeUnion
 #[wasm_bindgen]
 pub fn from_ts_string_literal_type_union_into_rust_enum(

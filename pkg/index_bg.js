@@ -511,15 +511,6 @@ export function from_ts_interface_into_rust_struct(obj) {
 }
 
 /**
- * @param {Color} color
- * @returns {Color}
- */
-export function from_ts_namespace_into_rust_enum(color) {
-    const ret = wasm.from_ts_namespace_into_rust_enum(color);
-    return ret;
-}
-
-/**
  * @param {MyTuple} tuple
  * @returns {MyTuple}
  */
@@ -624,8 +615,8 @@ export function from_ts_number_into_rust_i32(n) {
  * @param {bigint} n
  * @returns {bigint}
  */
-export function from_ts_number_into_rust_u64(n) {
-    const ret = wasm.from_ts_number_into_rust_u64(n);
+export function from_ts_bigint_into_rust_u64(n) {
+    const ret = wasm.from_ts_bigint_into_rust_u64(n);
     return BigInt.asUintN(64, ret);
 }
 
@@ -633,8 +624,8 @@ export function from_ts_number_into_rust_u64(n) {
  * @param {bigint} n
  * @returns {bigint}
  */
-export function from_ts_number_into_rust_i64(n) {
-    const ret = wasm.from_ts_number_into_rust_i64(n);
+export function from_ts_bigint_into_rust_i64(n) {
+    const ret = wasm.from_ts_bigint_into_rust_i64(n);
     return ret;
 }
 

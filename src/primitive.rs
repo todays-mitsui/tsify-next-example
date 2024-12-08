@@ -19,14 +19,14 @@ pub fn from_ts_number_into_rust_i32(n: i32) -> i32 {
 
 // @type (n: bigint) => bigint
 #[wasm_bindgen]
-pub fn from_ts_number_into_rust_u64(n: u64) -> u64 {
+pub fn from_ts_bigint_into_rust_u64(n: u64) -> u64 {
     console::log_1(&format!("value: {:?}", n).into());
     return n;
 }
 
 // @type (n: bigint) => bigint
 #[wasm_bindgen]
-pub fn from_ts_number_into_rust_i64(n: i64) -> i64 {
+pub fn from_ts_bigint_into_rust_i64(n: i64) -> i64 {
     console::log_1(&format!("value: {:?}", n).into());
     return n;
 }
